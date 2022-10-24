@@ -1,7 +1,6 @@
 package ru.netology.sender;
 
 import java.util.Map;
-
 import ru.netology.entity.Country;
 import ru.netology.entity.Location;
 import ru.netology.geo.GeoService;
@@ -11,7 +10,6 @@ public class MessageSenderImpl implements MessageSender {
 
     public static final String IP_ADDRESS_HEADER = "x-real-ip";
     private final GeoService geoService;
-
     private final LocalizationService localizationService;
 
     public MessageSenderImpl(GeoService geoService, LocalizationService localizationService) {
