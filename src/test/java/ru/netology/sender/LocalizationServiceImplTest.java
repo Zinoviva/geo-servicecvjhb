@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.i18n.LocalizationServiceImpl;
-import ru.netology.i18n.LocalizationServiceImplMock;
 import static ru.netology.entity.Country.RUSSIA;
 import static ru.netology.entity.Country.USA;
 
 @ExtendWith(MockitoExtension.class)
 class LocalizationServiceImplTest {
-    private LocalizationServiceImplMock localizationServiceImplMock;
+//    private LocalizationServiceImplMock localizationServiceImplMock;
     private LocalizationServiceImpl localizationService;
 
     @BeforeEach
