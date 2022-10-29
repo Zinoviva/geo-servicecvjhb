@@ -43,7 +43,8 @@ class MessageSenderImplTest {
 
         Mockito.when(geoService.byIp(ipAdress)).thenReturn(moscow);
         Mockito.when(localizationService.locale(Country.RUSSIA)).thenReturn(locate);
-        String result = messageSender.send(Map.of(IP_ADDRESS_HEADER, ipAdress));
+        MessageSenderImpl ms = new MessageSenderImpl(geoService, localizationService);
+        String result = ms.send(Map.of(IP_ADDRESS_HEADER, ipAdress));
 
         Assertions.assertEquals("Welcome", result);
     }
@@ -52,11 +53,12 @@ class MessageSenderImplTest {
     void sendEnglish() {
         String ipAdress = "96.13.122.10";
         String locate = "Hello";
-        Location moscow = new Location("USA", Country.USA, "5", 2);
+        Location usa = new Location("USA", Country.USA, "5", 2);
 
-        Mockito.when(geoService.byIp(ipAdress)).thenReturn(moscow);
-        Mockito.when(localizationService.locale(Country.RUSSIA)).thenReturn(locate);
-        String result = messageSender.send(Map.of(IP_ADDRESS_HEADER, ipAdress));
+        Mockito.when(geoService.byIp(ipAdress)).thenReturn(usa);
+        Mockito.when(localizationService.locale(Country.USA)).thenReturn(locate);
+        MessageSenderImpl ms = new MessageSenderImpl(geoService, localizationService);
+        String result = ms.send(Map.of(IP_ADDRESS_HEADER, ipAdress));
 
         Assertions.assertEquals("Hello", result);
     }
@@ -65,11 +67,12 @@ class MessageSenderImplTest {
     void sendSpain() {
         String ipAdress = "127.30.202.88";
         String locate = "HI";
-        Location moscow = new Location("Brazil", Country.BRAZIL, "4", 2);
+        Location brazil = new Location("Brazil", Country.BRAZIL, "4", 2);
 
-        Mockito.when(geoService.byIp(ipAdress)).thenReturn(moscow);
-        Mockito.when(localizationService.locale(Country.RUSSIA)).thenReturn(locate);
-        String result = messageSender.send(Map.of(IP_ADDRESS_HEADER, ipAdress));
+        Mockito.when(geoService.byIp(ipAdress)).thenReturn(brazil);
+        Mockito.when(localizationService.locale(Country.BRAZIL)).thenReturn(locate);
+        MessageSenderImpl ms = new MessageSenderImpl(geoService, localizationService);
+        String result = ms.send(Map.of(IP_ADDRESS_HEADER, ipAdress));
 
         Assertions.assertEquals("HI", result);
     }
